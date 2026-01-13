@@ -1,19 +1,24 @@
-name: Easy CI Pipeline
+name: Easy CI with Tests
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Print message
-      run: echo "CI is working!"
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
 
-    - name: Build Docker image
-      run: docker build -t easy-app .
+    - name: Install test tool
+      run: pip install pytest
+
+    - name: Run tests
+      run: pytest

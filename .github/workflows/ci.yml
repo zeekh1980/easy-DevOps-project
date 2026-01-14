@@ -1,11 +1,11 @@
-name: CI - Tests
+name: CI - Tests and Docker Build
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,3 +22,6 @@ jobs:
 
     - name: Run tests
       run: pytest
+
+    - name: Build Docker image
+      run: docker build -t easy-app:latest .

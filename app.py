@@ -1,1 +1,1 @@
-print("Hello DevOps – CI/CD is working!")
+print("Hello from optimized Docker image!")
